@@ -70,12 +70,12 @@ export function ContactPage() {
           </p>
         </MotionDiv>
 
-        <div className="grid gap-12 lg:grid-cols-2">
+        <div className="grid gap-12 lg:grid-cols-1">
           <MotionDiv
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.08 }}
-          >
+          > 
             {/* <div className="rounded-lg border border-white/10 bg-zinc-900 p-8">
               <h2 className="mb-6 text-2xl">Send a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">

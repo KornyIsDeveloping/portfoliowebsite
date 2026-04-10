@@ -132,10 +132,9 @@ export function HomePage() {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h2 className="mb-4 text-5xl font-semibold tracking-tight">Crafting Visual Stories</h2>
+            <h2 className="mb-4 text-5xl font-semibold tracking-tight">My Showreel</h2>
             <p className="mx-auto max-w-2xl text-lg text-zinc-400">
-              From concept to final cut, I bring stories to life through cinematography, editing,
-              and direction.
+              Here are the projects that I've made or I've been part of so far.
             </p>
           </MotionDiv>
 

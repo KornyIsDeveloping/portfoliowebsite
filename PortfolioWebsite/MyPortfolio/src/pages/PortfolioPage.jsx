@@ -18,15 +18,15 @@ const projects = [
   },
   {
     id: 2,
-    title: 'Behind the Lens',
+    title: "Writer's Block",
     category: 'Documentary',
-    duration: '25 min',
+    duration: '27 sec',
     year: '2025',
     description:
-      'An intimate portrait of three photographers finding beauty in unexpected places.',
+      'Short personal documentary.',
     image:
       'https://images.unsplash.com/photo-1758851088217-df00ca346e24?auto=format&fit=crop&w=1400&q=80',
-    awards: ['Audience Choice Award'],
+    // awards: ['Audience Choice Award'],   // awards: ['Audience Choice Award'],  https://youtu.be/rtN6nFPHW50
     role: 'Director, Cinematographer',
   },
   {
