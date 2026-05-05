@@ -26,7 +26,8 @@ const projects = [
       'Short personal documentary.',
     image:
       'https://images.unsplash.com/photo-1758851088217-df00ca346e24?auto=format&fit=crop&w=1400&q=80',
-    // awards: ['Audience Choice Award'],   // awards: ['Audience Choice Award'],  https://youtu.be/rtN6nFPHW50
+    awards: ['Audience Choice Award'],
+    videoUrl: 'https://youtu.be/rtN6nFPHW50',
     role: 'Director, Cinematographer',
   },
   {
@@ -127,62 +128,66 @@ export function PortfolioPage() {
         </MotionDiv>
 
         <div className="grid gap-8 md:auto-rows-fr md:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project, index) => (
-            <MotionDiv
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.08 }}
-              className="group relative h-full"
-            >
-              <div className="flex h-full flex-col overflow-hidden rounded-lg border border-white/10 bg-zinc-900 transition-all duration-300 hover:border-red-500/50">
-                <div className="relative aspect-video overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-500">
-                      <Play className="ml-0.5 h-8 w-8 text-white" fill="white" />
+          {filteredProjects.map((project, index) => {
+            const awards = Array.isArray(project.awards) ? project.awards : []
+
+            return (
+              <MotionDiv
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.08 }}
+                className="group relative h-full"
+              >
+                <div className="flex h-full flex-col overflow-hidden rounded-lg border border-white/10 bg-zinc-900 transition-all duration-300 hover:border-red-500/50">
+                  <div className="relative aspect-video overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-500">
+                        <Play className="ml-0.5 h-8 w-8 text-white" fill="white" />
+                      </div>
+                    </div>
+                    <div className="absolute right-3 top-3 rounded-full bg-black/80 px-3 py-1 text-xs backdrop-blur-sm">
+                      {project.category}
                     </div>
                   </div>
-                  <div className="absolute right-3 top-3 rounded-full bg-black/80 px-3 py-1 text-xs backdrop-blur-sm">
-                    {project.category}
+
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="mb-2 text-xl">{project.title}</h3>
+                    <div className="mb-3 flex items-center gap-4 text-sm text-zinc-400">
+                      <span className="flex items-center gap-1">
+                        <Clock className="h-4 w-4" />
+                        {project.duration}
+                      </span>
+                      <span>{project.year}</span>
+                    </div>
+                    <p className="mb-4 min-h-14 text-sm text-zinc-400">{project.description}</p>
+
+                    <div className="mb-4 min-h-6">
+                      {awards.length > 0 && (
+                        <div className="space-y-1">
+                          {awards.map((award) => (
+                            <div key={award} className="flex items-center gap-2 text-xs text-amber-400">
+                              <Award className="h-4 w-4" />
+                              {award}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <p className="mt-auto text-xs text-zinc-500">
+                      <span className="font-semibold">Role:</span> {project.role}
+                    </p>
                   </div>
                 </div>
-
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="mb-2 text-xl">{project.title}</h3>
-                  <div className="mb-3 flex items-center gap-4 text-sm text-zinc-400">
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      {project.duration}
-                    </span>
-                    <span>{project.year}</span>
-                  </div>
-                  <p className="mb-4 min-h-14 text-sm text-zinc-400">{project.description}</p>
-
-                  <div className="mb-4 min-h-6">
-                    {project.awards.length > 0 && (
-                      <div className="space-y-1">
-                        {project.awards.map((award) => (
-                          <div key={award} className="flex items-center gap-2 text-xs text-amber-400">
-                            <Award className="h-4 w-4" />
-                            {award}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  <p className="mt-auto text-xs text-zinc-500">
-                    <span className="font-semibold">Role:</span> {project.role}
-                  </p>
-                </div>
-              </div>
-            </MotionDiv>
-          ))}
+              </MotionDiv>
+            )
+          })}
         </div>
 
         {filteredProjects.length === 0 && (
